@@ -1,11 +1,15 @@
 import json
+import csv
 from http.server import BaseHTTPRequestHandler
 import urllib.parse
 
-# Load student data from the JSON file
+# Load student data from the CSV file
 def load_data():
+    data = []
     with open('C:/Users/Kusum Lata/Downloads/q-fastapi (1).csv', 'r') as file:
-        data = json.load(file)
+        reader = csv.DictReader(file)
+        for row in reader:
+            data.append(row)
     return data
 
 # Handler class to process incoming requests
